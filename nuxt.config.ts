@@ -23,6 +23,9 @@ export default defineNuxtConfig({
     // Recommended
     '@pinia/nuxt',
     '@vueuse/nuxt',
+
+    // Tests
+    '@nuxt/test-utils/module',
   ],
   ssr: true,
   devtools: { enabled: true },
