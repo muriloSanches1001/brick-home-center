@@ -2,6 +2,10 @@
   "name": "brick-home-center",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": "24.11.0",
+    "npm": ">=11.2.0"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -11,7 +15,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "stylelint": "stylelint \"**/*.{css,scss,vue,html}\"",
-    "stylelint:fix": "stylelint \"**/*.{css,scss,vue,html}\" --fix"
+    "typecheck": "vue-tsc --noEmit",
+    "stylelint:fix": "stylelint \"**/*.{css,scss,vue,html}\" --fix",
+    "ci:all": "npm run typecheck && npm run lint && npm run build"
   },
   "dependencies": {
     "@nuxt/fonts": "0.12.1",
