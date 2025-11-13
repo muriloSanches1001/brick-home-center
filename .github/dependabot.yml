@@ -3,17 +3,12 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 5
-    labels: ["dependencies"]
+    labels:
+      - "dependencies"
     versioning-strategy: increase-if-necessary
-
-    # group dependencies by type
-    groups:
-      security:
-        applies-to: security-updates
-      regular:
-        applies-to: version-updates
+    ignore:
+      - dependency-name: "*"
         update-types:
-          - "version-update:semver-minor"
-          - "version-update:semver-patch"
+          - "version-update:semver-major"
