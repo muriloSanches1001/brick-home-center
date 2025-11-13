@@ -1,27 +1,19 @@
 version: 2
 updates:
-  # security updates (diary)
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
-    allow:
-      - dependency-type: "direct"
-      - dependency-type: "production"
-    open-pull-requests-limit: 5
-    labels: ["dependencies", "security"]
-    versioning-strategy: increase-if-necessary
-  # geral updates (weekly)
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    allow:
-      - dependency-type: "direct"
-      - dependency-type: "production"
     open-pull-requests-limit: 5
     labels: ["dependencies"]
     versioning-strategy: increase-if-necessary
-    ignore:
-      - dependency-name: "*"
-        update-types: [ "version-update:semver-major" ]
+
+    # group dependencies by type
+    groups:
+      security:
+        applies-to: security-updates
+      regular:
+        applies-to: version-updates
+        update-types:
+          - "version-update:semver-minor"
+          - "version-update:semver-patch"
