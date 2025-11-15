@@ -1,4 +1,4 @@
-import {useApiFetch} from "~/composables/api/useApiFetch";
+import { useApiFetch } from '~/composables/api/useApiFetch'
 
 export const useVisitAnalytics = () => {
   const isSending = ref(false)
@@ -13,9 +13,11 @@ export const useVisitAnalytics = () => {
         '/analises/visitar',
         { method: 'POST' },
       )
-    } catch (err) {
+    }
+    catch (err) {
       error.value = err
-    } finally {
+    }
+    finally {
       isSending.value = false
     }
   }

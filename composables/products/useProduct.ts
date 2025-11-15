@@ -1,5 +1,5 @@
-import {useApiFetch} from "~/composables/api/useApiFetch";
-import type {ProductResponse} from "~/types/api";
+import { useApiFetch } from '~/composables/api/useApiFetch'
+import type { ProductResponse } from '~/types/api'
 
 export const useProduct = (id: number | string) => {
   const productId = computed(() => Number(id))

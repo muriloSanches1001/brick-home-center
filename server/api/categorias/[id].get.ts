@@ -1,6 +1,6 @@
-import type {H3Event} from 'h3'
-import {backendFetch} from '~/server/utils/backend-client'
-import type {ApiResponse, ProductCategoryResponse} from '~/types/api'
+import type { H3Event } from 'h3'
+import { backendFetch } from '~/server/utils/backend-client'
+import type { ApiResponse, ProductCategoryResponse } from '~/types/api'
 
 export default defineEventHandler(async (event: H3Event) => {
   const id = getRouterParam(event, 'id')

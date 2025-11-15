@@ -25,3 +25,13 @@ export interface Page {
   direction: 'ASC' | 'DESC'
   search: string
 }
+
+// error api
+
+export interface ErrorApiResponse {
+  type: string
+  title?: string
+  status: number
+  detail?: string
+  instance?: string
+}

@@ -1,8 +1,8 @@
-import type {Page, PageResponse, ProductCategoryResponse} from '~/types/api'
-import {useApiFetch} from "~/composables/api/useApiFetch";
+import type { Page, PageResponse, ProductCategoryResponse } from '~/types/api'
+import { useApiFetch } from '~/composables/api/useApiFetch'
 
 export const useCategories = (
-  initialQuery: Partial<Page> = {}
+  initialQuery: Partial<Page> = {},
 ) => {
   const query = ref<Page>({
     page: 0,
@@ -10,10 +10,10 @@ export const useCategories = (
     sort: 'name',
     direction: 'ASC',
     search: '',
-    ...initialQuery
+    ...initialQuery,
   })
 
-  const {data, pending, error, refresh} = useAsyncData(
+  const { data, pending, error, refresh } = useAsyncData(
     () => 'categories' + JSON.stringify(query.value),
     () =>
       useApiFetch<PageResponse<ProductCategoryResponse>>('/categorias', {
@@ -40,6 +40,6 @@ export const useCategories = (
     pagination,
     pending,
     error,
-    refresh
+    refresh,
   }
 }
