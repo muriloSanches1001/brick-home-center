@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { useApiFetch } from '~/composables/api/useApiFetch'
-import type {ErrorApiResponse, ProductCategoryResponse} from "~/types/api";
-import {useCategories} from "~/composables/categories/useCategories";
+import type { ErrorApiResponse, ProductCategoryResponse } from '~/types/api'
+import { useCategories } from '~/composables/categories/useCategories'
 
 vi.mock('~/composables/api/useApiFetch', () => ({
-  useApiFetch: vi.fn()
+  useApiFetch: vi.fn(),
 }))
 
 describe('useCategories', () => {
@@ -23,10 +23,10 @@ describe('useCategories', () => {
       pageNumber: 0,
       pageSize: 20,
       totalElements: 2,
-      totalPages: 1
+      totalPages: 1,
     })
 
-    const { query, categories, pagination, pending, error, refresh } = useCategories()
+    const { query, categories, pagination, pending, error } = useCategories()
 
     // await for the initial fetch
     await until(pending).toBe(false)
@@ -37,9 +37,9 @@ describe('useCategories', () => {
     expect(categories.value.length).toBe(2)
     expect(categories.value).toEqual([
       expect.objectContaining(createMockCategory(1)),
-      expect.objectContaining( createMockCategory(2))
+      expect.objectContaining(createMockCategory(2)),
     ])
-    expect(pagination.value).toEqual({page: 0, pageSize: 20, totalElements: 2, totalPages: 1})
+    expect(pagination.value).toEqual({ page: 0, pageSize: 20, totalElements: 2, totalPages: 1 })
   })
 
   it('should merge initialQuery into default query', async () => {
@@ -50,7 +50,7 @@ describe('useCategories', () => {
       pageNumber: 1,
       pageSize: 20,
       totalElements: 0,
-      totalPages: 0
+      totalPages: 0,
     })
 
     const { query, pending } = useCategories({ page: 1, search: 'test', size: 20 })
@@ -60,7 +60,7 @@ describe('useCategories', () => {
 
     expect(query.value).toEqual({ page: 1, size: 20, sort: 'name', direction: 'ASC', search: 'test' })
     expect(mockApiFetch).toHaveBeenCalledWith('/categorias', {
-      query: query.value
+      query: query.value,
     })
   })
 
@@ -69,22 +69,22 @@ describe('useCategories', () => {
 
     mockApiFetch.mockResolvedValueOnce({
       content: [
-        createMockCategory(1)
+        createMockCategory(1),
       ],
       pageNumber: 0,
       pageSize: 1,
       totalElements: 2,
-      totalPages: 2
+      totalPages: 2,
     })
 
     mockApiFetch.mockResolvedValueOnce({
       content: [
-        createMockCategory(2)
+        createMockCategory(2),
       ],
       pageNumber: 1,
       pageSize: 1,
       totalElements: 2,
-      totalPages: 2
+      totalPages: 2,
     })
 
     const { query, categories, pagination, pending } = useCategories()
@@ -113,7 +113,7 @@ describe('useCategories', () => {
       title: 'Falha ao buscar categorias.',
       status: 500,
       detail: 'Ocorreu um erro inesperado ao consultar a lista de categorias.',
-      instance: '/categorias'
+      instance: '/categorias',
     }
 
     mockApiFetch.mockRejectedValueOnce(fakeError)

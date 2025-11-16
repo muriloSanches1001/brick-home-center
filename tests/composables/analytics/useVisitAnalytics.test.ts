@@ -1,10 +1,10 @@
-import {beforeEach, describe, expect, it, vi} from 'vitest'
-import {useApiFetch} from "~/composables/api/useApiFetch";
-import {useVisitAnalytics} from "~/composables/analytics/useVisitAnalytics";
-import type {ErrorApiResponse} from "~/types/api";
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { useApiFetch } from '~/composables/api/useApiFetch'
+import { useVisitAnalytics } from '~/composables/analytics/useVisitAnalytics'
+import type { ErrorApiResponse } from '~/types/api'
 
 vi.mock('~/composables/api/useApiFetch', () => ({
-  useApiFetch: vi.fn()
+  useApiFetch: vi.fn(),
 }))
 
 describe('useVisitAnalytics', () => {
@@ -36,7 +36,7 @@ describe('useVisitAnalytics', () => {
       title: 'Falha ao registrar visita.',
       status: 500,
       detail: 'Ocorreu um erro inesperado ao tentar registrar a visita.',
-      instance: '/analises/visitar'
+      instance: '/analises/visitar',
     }
 
     mockApiFetch.mockRejectedValueOnce(fakeError)

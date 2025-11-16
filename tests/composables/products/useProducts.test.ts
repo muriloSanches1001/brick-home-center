@@ -1,10 +1,10 @@
-import {beforeEach, describe, expect, it, vi} from 'vitest'
-import {useProducts} from '~/composables/products/useProducts'
-import {useApiFetch} from '~/composables/api/useApiFetch'
-import type {ErrorApiResponse, ProductResponse} from "~/types/api";
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { useProducts } from '~/composables/products/useProducts'
+import { useApiFetch } from '~/composables/api/useApiFetch'
+import type { ErrorApiResponse, ProductResponse } from '~/types/api'
 
 vi.mock('~/composables/api/useApiFetch', () => ({
-  useApiFetch: vi.fn()
+  useApiFetch: vi.fn(),
 }))
 
 describe('useProducts', () => {
@@ -23,10 +23,10 @@ describe('useProducts', () => {
       pageNumber: 0,
       pageSize: 20,
       totalElements: 2,
-      totalPages: 1
+      totalPages: 1,
     })
 
-    const { query, products, pagination, pending, error, refresh } = useProducts()
+    const { query, products, pagination, pending, error } = useProducts()
 
     // await for the initial fetch
     await until(pending).toBe(false)
@@ -39,7 +39,7 @@ describe('useProducts', () => {
       expect.objectContaining(createMockProduct(1)),
       expect.objectContaining(createMockProduct(2)),
     ])
-    expect(pagination.value).toEqual({page: 0, pageSize: 20, totalElements: 2, totalPages: 1})
+    expect(pagination.value).toEqual({ page: 0, pageSize: 20, totalElements: 2, totalPages: 1 })
   })
 
   it('should merge initialQuery into default query', async () => {
@@ -50,7 +50,7 @@ describe('useProducts', () => {
       pageNumber: 1,
       pageSize: 20,
       totalElements: 0,
-      totalPages: 0
+      totalPages: 0,
     })
 
     const { query, pending } = useProducts({ page: 1, search: 'test', size: 20 })
@@ -60,7 +60,7 @@ describe('useProducts', () => {
 
     expect(query.value).toEqual({ page: 1, size: 20, sort: 'name', direction: 'ASC', search: 'test' })
     expect(mockApiFetch).toHaveBeenCalledWith('/produtos', {
-      query: query.value
+      query: query.value,
     })
   })
 
@@ -69,22 +69,22 @@ describe('useProducts', () => {
 
     mockApiFetch.mockResolvedValueOnce({
       content: [
-        createMockProduct(1)
+        createMockProduct(1),
       ],
       pageNumber: 0,
       pageSize: 1,
       totalElements: 2,
-      totalPages: 2
+      totalPages: 2,
     })
 
     mockApiFetch.mockResolvedValueOnce({
       content: [
-        createMockProduct(2)
+        createMockProduct(2),
       ],
       pageNumber: 1,
       pageSize: 1,
       totalElements: 2,
-      totalPages: 2
+      totalPages: 2,
     })
 
     const { query, products, pagination, pending } = useProducts()
@@ -113,7 +113,7 @@ describe('useProducts', () => {
       title: 'Falha ao buscar produtos.',
       status: 500,
       detail: 'Ocorreu um erro inesperado ao consultar a lista de produtos.',
-      instance: '/produtos'
+      instance: '/produtos',
     }
 
     mockApiFetch.mockRejectedValueOnce(fakeError)
@@ -139,5 +139,5 @@ const createMockProduct = (id: number): ProductResponse => ({
   createdAt: `2025-01-0${id}T00:00:00Z`,
   categories: [],
   active: id % 2 === 0,
-  link: `/products/${id}`
+  link: `/products/${id}`,
 })

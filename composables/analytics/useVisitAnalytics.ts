@@ -1,5 +1,5 @@
 import { useApiFetch } from '~/composables/api/useApiFetch'
-import {FetchError} from "ofetch";
+import { FetchError } from 'ofetch'
 
 export const useVisitAnalytics = () => {
   const isSending = ref(false)
