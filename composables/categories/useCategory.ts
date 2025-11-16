@@ -1,13 +1,12 @@
 import { useApiFetch } from '~/composables/api/useApiFetch'
 import type { ProductCategoryResponse } from '~/types/api'
 
-export const useCategory = (id: number | string) => {
-  const categoryId = computed(() => Number(id))
+export const useCategory = (id: number) => {
 
   const { data, pending, error, refresh } = useAsyncData(
-    () => 'category' + categoryId,
+    () => 'category' + id,
     () =>
-      useApiFetch<ProductCategoryResponse>(`/categorias/${categoryId.value}`),
+      useApiFetch<ProductCategoryResponse>(`/categorias/${id}`),
   )
 
   const category = computed(() => data.value)
