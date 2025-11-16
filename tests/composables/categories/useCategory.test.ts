@@ -76,7 +76,7 @@ describe('useCategory', () => {
 
 const createMockCategory = (id: number): ProductCategoryResponse => ({
   id,
-  name: `Categiry ${id}`,
+  name: `Category ${id}`,
   image: `https://cdn.example.com/img${id}.jpg`,
   createdAt: `2025-01-0${id}T00:00:00Z`,
   active: id % 2 === 0,
