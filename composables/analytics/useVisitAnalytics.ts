@@ -1,4 +1,5 @@
 import { useApiFetch } from '~/composables/api/useApiFetch'
+import { FetchError } from 'ofetch'
 
 export const useVisitAnalytics = () => {
   const isSending = ref(false)
@@ -15,7 +16,7 @@ export const useVisitAnalytics = () => {
       )
     }
     catch (err) {
-      error.value = err
+      error.value = new FetchError('Failed to send visit analytics', { cause: err })
     }
     finally {
       isSending.value = false
