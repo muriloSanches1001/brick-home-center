@@ -12,5 +12,11 @@ module.exports = {
   ],
   rules: {
     'no-empty-source': null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ]
   },
 }
