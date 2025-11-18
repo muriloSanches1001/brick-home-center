@@ -28,7 +28,10 @@
     "@nuxtjs/robots": "5.5.6",
     "@nuxtjs/sitemap": "7.4.7",
     "@pinia/nuxt": "0.11.3",
+    "@vueuse/core": "14.0.0",
+    "@vueuse/integrations": "14.0.0",
     "@vueuse/nuxt": "14.0.0",
+    "focus-trap": "7.6.6",
     "nuxt": "4.2.1"
   },
   "devDependencies": {
