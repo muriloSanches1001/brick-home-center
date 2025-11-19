@@ -45,12 +45,15 @@ const classes = computed(() =>
     variantClasses[props.variant],
     alignClasses[props.align],
     props.class,
-  ].join(' ')
+  ].join(' '),
 )
 </script>
 
 <template>
-  <component :is="props.as" :class="classes">
+  <component
+    :is="props.as"
+    :class="classes"
+  >
     <slot />
   </component>
 </template>

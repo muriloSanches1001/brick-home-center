@@ -9,13 +9,13 @@ const props = defineProps<{
 }>()
 
 const sizeClasses: Record<HeadingSizes, string> = {
-  xs: 'text-xs font-semibold tracking-wide',
-  sm: 'text-sm font-semibold tracking-wide',
-  md: 'text-base font-bold tracking-wide',
-  lg: 'text-xl font-bold tracking-normal',
-  xl: 'text-2xl font-extrabold tracking-normal',
+  'xs': 'text-xs font-semibold tracking-wide',
+  'sm': 'text-sm font-semibold tracking-wide',
+  'md': 'text-base font-bold tracking-wide',
+  'lg': 'text-xl font-bold tracking-normal',
+  'xl': 'text-2xl font-extrabold tracking-normal',
   '2xl': 'text-3xl font-extrabold tracking-normal',
-  display: 'text-4xl md:text-5xl font-extrabold tracking-normal',
+  'display': 'text-4xl md:text-5xl font-extrabold tracking-normal',
 }
 
 const tag = props.as || 'h2'
@@ -26,7 +26,10 @@ const classes = computed(() => {
 </script>
 
 <template>
-  <component :is="tag" :class="classes">
+  <component
+    :is="tag"
+    :class="classes"
+  >
     <slot />
   </component>
 </template>

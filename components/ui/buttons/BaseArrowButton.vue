@@ -24,7 +24,7 @@ const buttonSizeClass: Record<Size, string> = {
 }
 
 const buttonClasses = computed(() =>
-  `${buttonBase} ${!props.disabled ? 'group' : ''} ${buttonSizeClass[props.size || 'md']} ${buttonVariantClass[props.variant || 'primary']} ${props.disabled ? 'opacity-80 cursor-default' : ''}`
+  `${buttonBase} ${!props.disabled ? 'group' : ''} ${buttonSizeClass[props.size || 'md']} ${buttonVariantClass[props.variant || 'primary']} ${props.disabled ? 'opacity-80 cursor-default' : ''}`,
 )
 
 const iconWrapperBase = 'flex items-center justify-center rounded-full absolute right-2 top-1/2 -translate-y-1/2 transition-colors duration-400 ease-in-out'
@@ -41,7 +41,7 @@ const iconWrapperSizeClass: Record<Size, string> = {
 }
 
 const iconWrapperClasses = computed(() =>
-  `${iconWrapperBase} ${iconWrapperSizeClass[props.size || 'md']} ${iconWrapperVariantClass[props.variant || 'primary']}`
+  `${iconWrapperBase} ${iconWrapperSizeClass[props.size || 'md']} ${iconWrapperVariantClass[props.variant || 'primary']}`,
 )
 
 const iconBase = 'rotate-45 icon'
@@ -58,7 +58,7 @@ const iconVariantClass: Record<Variant, string> = {
 }
 
 const iconClasses = computed(() =>
-  `${iconBase} ${iconSizeClass[props.size || 'md']} ${iconVariantClass[props.variant || 'primary']}`
+  `${iconBase} ${iconSizeClass[props.size || 'md']} ${iconVariantClass[props.variant || 'primary']}`,
 )
 
 const textVariantClass: Record<Variant, string> = {
@@ -73,7 +73,7 @@ const textSizeClass: Record<Size, string> = {
 }
 
 const textClasses = computed(() =>
-  `${textSizeClass[props.size || 'md']} ${textVariantClass[props.variant || 'primary']}`
+  `${textSizeClass[props.size || 'md']} ${textVariantClass[props.variant || 'primary']}`,
 )
 </script>
 

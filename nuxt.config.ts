@@ -38,6 +38,10 @@ export default defineNuxtConfig({
       // link: [{rel: 'icon', href: '/favicon.ico'}]
     },
   },
+  css: [
+    '~/assets/css/tailwind.css',
+    'simplebar/dist/simplebar.min.css',
+  ],
   site: {
     url: process.env.SITE_URL,
     name: 'Brick Home Center',
@@ -72,7 +76,7 @@ export default defineNuxtConfig({
         name: 'Lexend Deca',
         weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
         provider: 'google',
-      }
+      },
     ],
     assets: {
       prefix: '/_fonts/',
@@ -95,8 +99,4 @@ export default defineNuxtConfig({
   tailwindcss: {
     viewer: false,
   },
-  css: [
-    '~/assets/css/tailwind.css',
-    'simplebar/dist/simplebar.min.css'
-  ]
 })

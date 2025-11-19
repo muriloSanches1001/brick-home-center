@@ -1,14 +1,13 @@
-import {describe, expect, it, vi} from 'vitest'
-import {useSearchArea} from '~/composables/ui/modals/useSearchArea'
-
+import { describe, expect, it, vi } from 'vitest'
+import { useSearchArea } from '~/composables/ui/modals/useSearchArea'
 
 describe('useSearchArea', () => {
   it('should open, close and toggle the state', async () => {
-    let state = { value: false }
+    const state = { value: false }
 
     // Mock the useState composable
     vi.mock('#app', () => ({
-      useState: vi.fn(() => state)
+      useState: vi.fn(() => state),
     }))
 
     const { isOpen, open, close, toggle } = useSearchArea()

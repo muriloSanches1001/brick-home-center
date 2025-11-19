@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import TheNav from '~/components/layout/TheNav.vue'
-import TheSearchArea from "~/components/layout/TheSearchArea.vue";
-import {useSearchArea} from "~/composables/ui/modals/useSearchArea";
-import TheMobileNav from "~/components/layout/TheMobileNav.vue";
-import {useMobileNav} from "~/composables/ui/modals/useMobileNav";
-import {useSidebar} from "~/composables/ui/modals/useSidebar";
-import TheSidebar from "~/components/layout/TheSidebar.vue";
+import TheSearchArea from '~/components/layout/TheSearchArea.vue'
+import { useSearchArea } from '~/composables/ui/modals/useSearchArea'
+import TheMobileNav from '~/components/layout/TheMobileNav.vue'
+import { useMobileNav } from '~/composables/ui/modals/useMobileNav'
+import { useSidebar } from '~/composables/ui/modals/useSidebar'
+import TheSidebar from '~/components/layout/TheSidebar.vue'
 
 const { isOpen: isSearchAreaOpen } = useSearchArea()
 const { isOpen: isMobileNavOpen } = useMobileNav()
 const { isOpen: isSidebarOpen } = useSidebar()
-
 </script>
 
 <template>

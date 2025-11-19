@@ -27,7 +27,8 @@ onMounted(async () => {
       const cleanup = useEventListener(scrollElement, 'scroll', onScroll)
 
       onUnmounted(() => cleanup())
-    } else {
+    }
+    else {
       console.warn('BaseScrollWrapper: Elemento .simplebar-content-wrapper não encontrado.')
     }
   }

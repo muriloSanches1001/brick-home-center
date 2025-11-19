@@ -1,38 +1,38 @@
 <script setup lang="ts">
-import BaseArrowButton from "~/components/ui/buttons/BaseArrowButton.vue";
-import BaseTextInput from "~/components/ui/inputs/BaseTextInput.vue";
-import {useSearchArea} from "~/composables/ui/modals/useSearchArea";
-import {useFocusTrap} from '@vueuse/integrations/useFocusTrap'
-import type {UseFocusTrapOptions} from "@vueuse/integrations";
+import BaseArrowButton from '~/components/ui/buttons/BaseArrowButton.vue'
+import BaseTextInput from '~/components/ui/inputs/BaseTextInput.vue'
+import { useSearchArea } from '~/composables/ui/modals/useSearchArea'
+import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
+import type { UseFocusTrapOptions } from '@vueuse/integrations'
 
 const options: UseFocusTrapOptions = {
   escapeDeactivates: true,
   clickOutsideDeactivates: true,
   immediate: true,
   onDeactivate() {
-    close();
+    close()
   },
-};
+}
 
-const dialogRef = ref<HTMLDialogElement | null>(null);
-const searchInput = ref<string>("");
+const dialogRef = ref<HTMLDialogElement | null>(null)
+const searchInput = ref<string>('')
 
-const { deactivate } = useFocusTrap(dialogRef, options);
-const { close } = useSearchArea();
+const { deactivate } = useFocusTrap(dialogRef, options)
+const { close } = useSearchArea()
 
 onUnmounted(() => {
-  deactivate();
-});
+  deactivate()
+})
 
 const search = () => {
   // TODO: Implement search functionality
-  console.log("Searching for:", searchInput.value);
-};
+  console.log('Searching for:', searchInput.value)
+}
 
 const handleClose = () => {
-  deactivate();
-  close();
-};
+  deactivate()
+  close()
+}
 </script>
 
 <template>
@@ -43,14 +43,20 @@ const handleClose = () => {
     aria-describedby="search-description"
     aria-modal="true"
   >
-    <span id="search-title" class="sr-only">Área de busca de produto</span>
-    <span id="search-description" class="sr-only">Digite os termos para realizar sua busca de produtos no site</span>
+    <span
+      id="search-title"
+      class="sr-only"
+    >Área de busca de produto</span>
+    <span
+      id="search-description"
+      class="sr-only"
+    >Digite os termos para realizar sua busca de produtos no site</span>
 
     <button
       type="button"
       aria-label="Fechar área de busca"
-      @click="handleClose"
       class="absolute top-6 right-6 w-8 h-8 flex items-center justify-center focus:transition-all focus:duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+      @click="handleClose"
     >
       <Icon
         name="uil:times"
@@ -61,25 +67,31 @@ const handleClose = () => {
 
     <form
       class="mx-auto w-full max-w-7xl flex flex-col md:flex-row items-center gap-4 md:gap-10"
-      @submit.prevent="search"
       role="search"
+      @submit.prevent="search"
     >
       <base-text-input
         id="search-area-product-name"
+        v-model="searchInput"
         name="search"
         type="text"
         size="md"
-        v-model="searchInput"
         placeholder="Digite sua busca"
         icon="uil:search"
-        aria-label="Campo de busca"
-        aria-describedby="search-description"
+        ariaLabel="Campo de busca"
+        ariaDescribedby="search-description"
         :disabled="false"
         :required="true"
         bg="bg-neutral-50"
         class="w-full md:w-3/4"
       />
-      <base-arrow-button class="w-full md:w-1/4" size="sm" type="submit">Buscar</base-arrow-button>
+      <base-arrow-button
+        class="w-full md:w-1/4"
+        size="sm"
+        type="submit"
+      >
+        Buscar
+      </base-arrow-button>
     </form>
   </dialog>
 </template>

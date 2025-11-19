@@ -13,16 +13,16 @@ const props = defineProps<{
   bg?: string
   fontColor?: string
   name: string
-  'aria-label': string
-  'aria-describedby'?: string
+  ariaLabel: string
+  ariaDescribedby?: string
   disabled: boolean
   required: boolean
 }>()
 
 const emit = defineEmits<{
   'update:modelValue': [value: string]
-  blur: [Event]
-  focus: [Event]
+  'blur': [Event]
+  'focus': [Event]
 }>()
 </script>
 
@@ -40,7 +40,7 @@ const emit = defineEmits<{
           : props.size === 'lg'
             ? 'w-6 h-6'
             : 'w-5 h-5',
-        props.iconColor ?? 'text-neutral-500'
+        props.iconColor ?? 'text-neutral-500',
       ]"
     />
 
@@ -50,13 +50,10 @@ const emit = defineEmits<{
       :type="props.type"
       :value="props.modelValue"
       :placeholder="props.placeholder"
-      :aria-label="props['aria-label']"
-      :aria-describedby="props['aria-describedby']"
+      :aria-label="props.ariaLabel"
+      :aria-describedby="props.ariaDescribedby"
       :disabled="props.disabled"
       :required="props.required"
-      @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-      @blur="emit('blur', $event)"
-      @focus="emit('focus', $event)"
       class="w-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 border-b border-neutral-300"
       :class="[
         props.icon
@@ -73,9 +70,12 @@ const emit = defineEmits<{
             : 'py-4 text-sm',
         props.bg ?? 'bg-neutral-50',
         props.fontColor ?? 'text-gray-900',
-        'font-light'
+        'font-light',
       ]"
-    />
+      @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+      @blur="emit('blur', $event)"
+      @focus="emit('focus', $event)"
+    >
   </div>
 </template>
 

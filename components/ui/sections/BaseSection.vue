@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseContainer from "~/components/ui/sections/BaseContainer.vue";
+import BaseContainer from '~/components/ui/sections/BaseContainer.vue'
 
 type SectionVariant = 'default' | 'muted' | 'dark'
 type PaddingY = 'sm' | 'md' | 'lg'

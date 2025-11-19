@@ -12,17 +12,17 @@ module.exports = {
   ],
   rules: {
     'no-empty-source': null,
-    "selector-pseudo-class-no-unknown": [
+    'selector-pseudo-class-no-unknown': [
       true,
       {
-        "ignorePseudoClasses": ["global", "deep", "slotted"]
+        ignorePseudoClasses: ['global', 'deep', 'slotted'],
       },
     ],
-    "declaration-property-value-no-unknown": [
+    'declaration-property-value-no-unknown': [
       true,
       {
-        "ignoreValues": ["/^theme\\(/"]
-      }
-    ]
+        ignoreValues: ['/^theme\\(/'],
+      },
+    ],
   },
 }

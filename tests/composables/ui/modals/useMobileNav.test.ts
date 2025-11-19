@@ -1,14 +1,13 @@
-import {describe, expect, it, vi} from 'vitest'
-import {useMobileNav} from "~/composables/ui/modals/useMobileNav";
-
+import { describe, expect, it, vi } from 'vitest'
+import { useMobileNav } from '~/composables/ui/modals/useMobileNav'
 
 describe('useMobileNav', () => {
   it('should open, close and toggle the state', async () => {
-    let state = { value: false }
+    const state = { value: false }
 
     // Mock the useState composable
     vi.mock('#app', () => ({
-      useState: vi.fn(() => state)
+      useState: vi.fn(() => state),
     }))
 
     const { isOpen, open, close, toggle } = useMobileNav()
