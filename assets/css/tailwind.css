@@ -1,3 +1,11 @@
+@import './scrollbar.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary-default: theme('colors.primary.DEFAULT');
+  --primary-strong: theme('colors.primary.strong');
+  --neutral-100: theme('colors.neutral.100');
+}
