@@ -95,4 +95,8 @@ export default defineNuxtConfig({
   tailwindcss: {
     viewer: false,
   },
+  css: [
+    '~/assets/css/tailwind.css',
+    'simplebar/dist/simplebar.min.css'
+  ]
 })
