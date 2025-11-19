@@ -3,6 +3,7 @@ import BaseArrowButton from "~/components/ui/buttons/BaseArrowButton.vue";
 import {useSearchArea} from "~/composables/ui/modals/useSearchArea";
 import {useMobileNav} from "~/composables/ui/modals/useMobileNav";
 import {useSidebar} from "~/composables/ui/modals/useSidebar";
+import {useAppScroll} from "~/composables/ui/app/useAppScroll";
 
 const navItems = ref<{ name: string; link: string }[]>([
   {name: 'Home', link: '/'},
@@ -13,19 +14,7 @@ const navItems = ref<{ name: string; link: string }[]>([
   {name: 'Contato', link: '/contato'},
 ])
 
-const isSticky = ref(false)
-
-const handleScroll = () => {
-  isSticky.value = window.scrollY > 50
-}
-
-const cleanup = useEventListener(window, 'scroll', handleScroll)
-
-onMounted(() => {
-  handleScroll()
-
-  onUnmounted(cleanup)
-})
+const { isSticky } = useAppScroll()
 
 const {open: openSearchArea} = useSearchArea()
 const {open: openMobileNav} = useMobileNav()
