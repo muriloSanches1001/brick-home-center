@@ -4,7 +4,7 @@ import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { useSidebar } from '~/composables/ui/modals/useSidebar'
 import BaseHeading from '~/components/ui/typography/BaseHeading.vue'
 import BaseText from '~/components/ui/typography/BaseText.vue'
-import BaseScrollWrapper from "~/components/ui/scroll/BaseScrollWrapper.vue";
+import BaseScrollWrapper from '~/components/ui/scroll/BaseScrollWrapper.vue'
 
 const benefits = ref(['Qualidade', 'Durabilidade', 'Segurança', 'Pontualidade', 'Inovação'])
 const socialLinks = ref<{

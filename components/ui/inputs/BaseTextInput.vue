@@ -13,8 +13,8 @@ const props = defineProps<{
   bg?: string
   fontColor?: string
   name: string
-  ariaLabel: string
-  ariaDescribedby?: string
+  inputAriaLabel: string
+  inputAriaDescribedby?: string
   disabled: boolean
   required: boolean
 }>()
@@ -50,8 +50,8 @@ const emit = defineEmits<{
       :type="props.type"
       :value="props.modelValue"
       :placeholder="props.placeholder"
-      :aria-label="props.ariaLabel"
-      :aria-describedby="props.ariaDescribedby"
+      :aria-label="props.inputAriaLabel"
+      :aria-describedby="props.inputAriaDescribedby"
       :disabled="props.disabled"
       :required="props.required"
       class="w-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 border-b border-neutral-300"
