@@ -38,6 +38,10 @@ export default defineNuxtConfig({
       // link: [{rel: 'icon', href: '/favicon.ico'}]
     },
   },
+  css: [
+    '~/assets/css/tailwind.css',
+    'simplebar/dist/simplebar.min.css',
+  ],
   site: {
     url: process.env.SITE_URL,
     name: 'Brick Home Center',
@@ -65,6 +69,11 @@ export default defineNuxtConfig({
     families: [
       {
         name: 'Inter',
+        weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+        provider: 'google',
+      },
+      {
+        name: 'Lexend Deca',
         weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
         provider: 'google',
       },
