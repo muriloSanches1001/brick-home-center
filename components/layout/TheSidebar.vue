@@ -89,6 +89,7 @@ const handleClose = () => {
           <base-text
             size="sm"
             as="p"
+            class="text-slate-700"
           >
             A Brick é uma empresa de construção focada em entregar obras seguras, bem-feitas e adaptadas às necessidades de cada cliente.
           </base-text>
