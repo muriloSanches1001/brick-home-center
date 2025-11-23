@@ -18,7 +18,7 @@ const sizeClasses: Record<TextSize, string> = {
   xs: 'text-xs leading-relaxed',
   sm: 'text-sm leading-relaxed',
   md: 'text-base leading-relaxed',
-  lg: 'text-lg leading-relaxed',
+  lg: 'text-base md:text-lg leading-relaxed',
 }
 
 const alignClasses: Record<TextAlign, string> = {
