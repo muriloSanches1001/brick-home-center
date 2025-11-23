@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/fonts',
     '@nuxt/icon',
+    'vue3-carousel-nuxt',
 
     // Code quality
     '@nuxt/eslint',
@@ -51,6 +52,7 @@ export default defineNuxtConfig({
     privateApiKey: process.env.NUXT_PRIVATE_API_KEY,
     public: {
       siteName: 'Brick Home Center',
+      s3Base: process.env.NUXT_S3_BASE,
     },
   },
   alias: {
