@@ -7,15 +7,7 @@ import BaseText from '~/components/ui/typography/BaseText.vue'
 import BaseScrollWrapper from '~/components/ui/scroll/BaseScrollWrapper.vue'
 
 const benefits = ref(['Qualidade', 'Durabilidade', 'Segurança', 'Pontualidade', 'Inovação'])
-const socialLinks = ref<{
-  link: string
-  icon: string
-  name: string
-}[]>([
-  { link: 'https://www.instagram.com', icon: 'uil:instagram', name: 'Instagram' },
-  { link: 'https://www.facebook.com', icon: 'uil:facebook-f', name: 'Facebook' },
-  { link: 'https://www.linkedin.com', icon: 'uil:linkedin-alt', name: 'LinkedIn' },
-])
+const { social } = useAppConfig()
 
 const options: UseFocusTrapOptions = {
   escapeDeactivates: true,
@@ -127,18 +119,18 @@ const handleClose = () => {
           </base-heading>
           <ul class="flex gap-2">
             <li
-              v-for="social in socialLinks"
-              :key="social.link"
+              v-for="s in social"
+              :key="s.link"
             >
               <a
-                :href="social.link"
+                :href="s.link"
                 target="_blank"
                 rel="noopener noreferrer"
-                :aria-label="`Link para rede social ${social.name}`"
+                :aria-label="`Link para rede social ${s.name}`"
                 class="w-8 h-8 rounded-full bg-neutral-900 hover:bg-primary focus:bg-primary flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
               >
                 <Icon
-                  :name="social.icon"
+                  :name="s.icon"
                   class="w-4 h-4 text-neutral-50"
                   aria-hidden="true"
                 />
