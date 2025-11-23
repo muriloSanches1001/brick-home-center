@@ -10,15 +10,15 @@ const props = defineProps<{
 }>()
 
 const variantClass: Record<SectionVariant, string> = {
-  default: 'bg-white',
+  default: 'bg-neutral-50',
   muted: 'bg-slate-50',
   dark: 'bg-slate-900 text-slate-50',
 }
 
 const pyClass: Record<NonNullable<typeof props.paddingY>, string> = {
-  sm: 'py-8 md:py-10',
-  md: 'py-10 md:py-14',
-  lg: 'py-12 md:py-20',
+  sm: 'py-[50px] md:py-[60px]',
+  md: 'py-[60px] md:py-[80px]',
+  lg: 'py-[70px] md:py-[100px]',
 }
 
 const sectionClasses = computed(() => [

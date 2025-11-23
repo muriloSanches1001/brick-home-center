@@ -8,4 +8,5 @@
   --primary-default: theme('colors.primary.DEFAULT');
   --primary-strong: theme('colors.primary.strong');
   --neutral-100: theme('colors.neutral.100');
+  --neutral-50: theme('colors.neutral.50');
 }

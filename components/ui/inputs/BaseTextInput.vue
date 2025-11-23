@@ -17,6 +17,7 @@ const props = defineProps<{
   inputAriaDescribedby?: string
   disabled: boolean
   required: boolean
+  class?: string
 }>()
 
 const emit = defineEmits<{
@@ -71,6 +72,7 @@ const emit = defineEmits<{
         props.bg ?? 'bg-neutral-50',
         props.fontColor ?? 'text-gray-900',
         'font-light',
+        props.class ?? '',
       ]"
       @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       @blur="emit('blur', $event)"

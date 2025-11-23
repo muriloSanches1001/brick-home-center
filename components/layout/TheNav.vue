@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import BaseArrowButton from '~/components/ui/buttons/BaseArrowButton.vue'
 import { useSearchArea } from '~/composables/ui/modals/useSearchArea'
 import { useMobileNav } from '~/composables/ui/modals/useMobileNav'
 import { useSidebar } from '~/composables/ui/modals/useSidebar'
 import { useAppScroll } from '~/composables/ui/app/useAppScroll'
+import BaseArrowLink from '~/components/ui/links/BaseArrowLink.vue'
 
 const navItems = ref<{ name: string, link: string }[]>([
   { name: 'Home', link: '/' },
@@ -84,9 +84,12 @@ const { open: openSidebar } = useSidebar()
           />
         </button>
 
-        <base-arrow-button class="hidden md:flex lg:hidden xl:flex">
+        <base-arrow-link
+          to="/contato"
+          class="hidden md:flex lg:hidden xl:flex"
+        >
           Entre em Contato!
-        </base-arrow-button>
+        </base-arrow-link>
 
         <button
           class="hidden [@media(min-width:550px)]:flex justify-center items-center w-12 h-12 rounded-full focus:outline-none bg-black focus:bg-primary hover:bg-primary cursor-pointer transition-colors duration-300 ease-in-out"
