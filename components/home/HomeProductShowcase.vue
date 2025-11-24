@@ -49,7 +49,9 @@ const { products, pending, error } = useProducts({ size: 8, page: 0, search: '' 
         :key="product.id"
         class="items-start"
       >
-        <shop-item :product="product" />
+        <div class="w-[300px] h-auto">
+          <shop-item :product="product" />
+        </div>
       </Slide>
     </Carousel>
     <div
