@@ -9,6 +9,9 @@ const props = defineProps<{
   to: string
 }>()
 
+const isExternal = computed(() => props.to.startsWith('http'))
+const linkTarget = computed(() => isExternal.value ? '_blank' : undefined)
+
 const linkBase = 'rounded-full font-bold uppercase tracking-wider font-lexend flex items-center justify-center relative overflow-hidden focus-visible:outline-none'
 
 const linkVariantClass: Record<Variant, string> = {
@@ -80,6 +83,8 @@ const textClasses = computed(() =>
   <nuxt-link
     :class="linkClasses"
     :disabled="props.disabled"
+    :target="linkTarget"
+    :external="isExternal"
     :to="props.to"
   >
     <span :class="textClasses">

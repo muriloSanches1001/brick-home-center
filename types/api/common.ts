@@ -24,6 +24,7 @@ export interface Page {
   sort: string
   direction: 'ASC' | 'DESC'
   search: string
+  categoryId?: string | number
 }
 
 // error api

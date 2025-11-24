@@ -1,14 +1,23 @@
-import { describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { useAppScroll } from '~/composables/ui/app/useAppScroll'
+import { useEventListener } from '@vueuse/core'
+
+vi.mock('#app', () => ({
+  useState: vi.fn((key, init) => {
+    return { value: init() }
+  }),
+}))
+
+vi.mock('@vueuse/core', () => ({
+  useEventListener: vi.fn(),
+}))
 
 describe('useAppScroll', () => {
-  it('should update isSticky state based on scroll position', async () => {
-    vi.mock('#app', () => ({
-      useState: vi.fn((key, init) => {
-        return { value: init() }
-      }),
-    }))
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
 
+  it('should update isSticky state based on scroll position', () => {
     const { updateScrollTop, isSticky } = useAppScroll()
 
     expect(isSticky.value).toBe(false)
@@ -18,7 +27,6 @@ describe('useAppScroll', () => {
     } as unknown as Event
 
     updateScrollTop(eventScrollDown)
-
     expect(isSticky.value).toBe(true)
 
     const eventScrollUp = {
@@ -26,7 +34,58 @@ describe('useAppScroll', () => {
     } as unknown as Event
 
     updateScrollTop(eventScrollUp)
-
     expect(isSticky.value).toBe(false)
+  })
+
+  it('should register the scroll element and attach event listener', () => {
+    const { registerScrollElement, updateScrollTop } = useAppScroll()
+
+    const mockElement = document.createElement('div')
+
+    registerScrollElement(mockElement)
+
+    expect(useEventListener).toHaveBeenCalledWith(
+      mockElement,
+      'scroll',
+      updateScrollTop,
+    )
+  })
+
+  it('should scroll to top with smooth behavior by default', () => {
+    const { registerScrollElement, scrollToTop } = useAppScroll()
+
+    const mockElement = document.createElement('div')
+    mockElement.scrollTo = vi.fn()
+
+    registerScrollElement(mockElement)
+
+    scrollToTop()
+
+    expect(mockElement.scrollTo).toHaveBeenCalledWith({
+      top: 0,
+      behavior: 'smooth',
+    })
+  })
+
+  it('should scroll to top with auto behavior when smooth is false', () => {
+    const { registerScrollElement, scrollToTop } = useAppScroll()
+
+    const mockElement = document.createElement('div')
+    mockElement.scrollTo = vi.fn()
+
+    registerScrollElement(mockElement)
+
+    scrollToTop(false)
+
+    expect(mockElement.scrollTo).toHaveBeenCalledWith({
+      top: 0,
+      behavior: 'auto',
+    })
+  })
+
+  it('should not throw error if scrollToTop is called without registered element', () => {
+    const { scrollToTop } = useAppScroll()
+
+    expect(() => scrollToTop()).not.toThrow()
   })
 })

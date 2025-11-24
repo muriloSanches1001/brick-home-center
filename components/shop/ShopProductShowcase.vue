@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import BaseHeading from '~/components/ui/typography/BaseHeading.vue'
-import BaseArrowLink from '~/components/ui/links/BaseArrowLink.vue'
 import { useProducts } from '~/composables/products/useProducts'
 import BaseLoader from '~/components/ui/loaders/BaseLoader.vue'
 import BaseText from '~/components/ui/typography/BaseText.vue'
@@ -10,26 +9,13 @@ const { products, pending, error } = useProducts({ size: 8, page: 0, search: '' 
 
 <template>
   <div class="w-full flex flex-col gap-12">
-    <div class="flex w-full flex-col gap-4 items-center">
-      <base-heading
-        as="h3"
-        size="sm"
-        class="text-neutral-50 bg-primary px-5 py-2 rounded-full w-fit"
-      >
-        <span
-          aria-hidden="true"
-          class="select-none"
-        >------ </span>O QUE OFERECEMOS<span
-          aria-hidden="true"
-          class="select-none"
-        > ------</span>
-      </base-heading>
+    <div class="flex w-full flex-col">
       <base-heading
         as="h2"
-        size="display"
+        size="2xl"
         class="text-neutral-900"
       >
-        Da Fundação ao Acabamento
+        Produtos Relacionados
       </base-heading>
     </div>
 
@@ -70,12 +56,6 @@ const { products, pending, error } = useProducts({ size: 8, page: 0, search: '' 
       >
         {{ error }}
       </base-text>
-    </div>
-
-    <div class="flex w-full justify-center">
-      <base-arrow-link to="/shop">
-        Ver mais
-      </base-arrow-link>
     </div>
   </div>
 </template>

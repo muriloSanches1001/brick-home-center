@@ -6,14 +6,10 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'scroll', event: Event): void
+  (e: 'ready', element: HTMLElement): void
 }>()
 
 const simplebarRef = ref<InstanceType<typeof SimpleBar> | null>(null)
-
-const onScroll = (e: Event) => {
-  emit('scroll', e)
-}
 
 onMounted(async () => {
   await nextTick()
@@ -24,9 +20,7 @@ onMounted(async () => {
     const scrollElement = rootElement.querySelector('.simplebar-content-wrapper') as HTMLElement
 
     if (scrollElement) {
-      const cleanup = useEventListener(scrollElement, 'scroll', onScroll)
-
-      onUnmounted(() => cleanup())
+      emit('ready', scrollElement)
     }
     else {
       console.warn('BaseScrollWrapper: Elemento .simplebar-content-wrapper não encontrado.')

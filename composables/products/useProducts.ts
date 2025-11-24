@@ -10,6 +10,7 @@ export const useProducts = (
     sort: 'name',
     direction: 'ASC',
     search: '',
+    categoryId: undefined,
     ...initialQuery,
   })
 
