@@ -8,7 +8,7 @@ export default defineAppConfig({
     { icon: 'material-symbols:call-sharp', title: 'Fale Conosco', content: '+55 (17) 99746-8333' },
     { icon: 'uil:search', title: 'Nosso Email', content: 'contato@brickhomecenter.com.br' },
     { icon: 'material-symbols:alarm', title: 'Horário de Funcionamento', content: 'Seg - Sex: 09h - 19h' },
-    { icon: 'material-symbols:map', title: 'Localização', content: 'Rua Descida, 1712, Centro - Santa Fé do Sul - SP' },
+    { icon: 'material-symbols:map', title: 'Localização', content: 'Rua Descida, 1712, Centro - Jales - SP' },
   ],
   services: [
     {
