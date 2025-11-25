@@ -1,0 +1,13 @@
+/* stylelint-disable selector-id-pattern */
+
+html,
+body,
+#__nuxt {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+/* stylelint-enable selector-id-pattern */

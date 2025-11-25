@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/fonts',
     '@nuxt/icon',
+    'vue3-carousel-nuxt',
 
     // Code quality
     '@nuxt/eslint',
@@ -38,6 +39,10 @@ export default defineNuxtConfig({
       // link: [{rel: 'icon', href: '/favicon.ico'}]
     },
   },
+  css: [
+    '~/assets/css/tailwind.css',
+    'simplebar/dist/simplebar.min.css',
+  ],
   site: {
     url: process.env.SITE_URL,
     name: 'Brick Home Center',
@@ -47,6 +52,7 @@ export default defineNuxtConfig({
     privateApiKey: process.env.NUXT_PRIVATE_API_KEY,
     public: {
       siteName: 'Brick Home Center',
+      s3Base: process.env.NUXT_S3_BASE,
     },
   },
   alias: {
@@ -65,6 +71,11 @@ export default defineNuxtConfig({
     families: [
       {
         name: 'Inter',
+        weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+        provider: 'google',
+      },
+      {
+        name: 'Lexend Deca',
         weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
         provider: 'google',
       },
