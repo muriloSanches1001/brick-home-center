@@ -98,7 +98,7 @@ const currentTitle = computed(() => {
           </ol>
         </div>
         <base-text
-          class="absolute hidden md:flex bottom-[100px] right-0 text-neutral-300 max-w-[250px] text-right"
+          class="absolute hidden md:flex bottom-[50px] right-0 text-neutral-300 max-w-[250px] text-right"
           size="sm"
         >
           Da fundação ao acabamento, garantimos os materiais certos para cada etapa da sua obra.
