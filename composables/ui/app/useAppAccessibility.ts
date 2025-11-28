@@ -6,7 +6,7 @@ export const useAppAccessibility = () => {
   const zoom = useCookie<number>('accessibility-zoom', {
     default: () => 100,
     maxAge: 60 * 60 * 24 * 365,
-    sameSite: 'lax'
+    sameSite: 'lax',
   })
 
   const updateDom = () => {
@@ -49,6 +49,6 @@ export const useAppAccessibility = () => {
     increase,
     decrease,
     reset,
-    init
+    init,
   }
 }

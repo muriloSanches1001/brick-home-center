@@ -1,5 +1,5 @@
-import {beforeEach, describe, expect, it, vi} from 'vitest'
-import {useAppAccessibility} from "~/composables/ui/app/useAppAccessibility";
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { useAppAccessibility } from '~/composables/ui/app/useAppAccessibility'
 
 vi.mock('#app', () => ({
   useCookie: vi.fn((key, opts) => {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import BaseScrollWrapper from '~/components/ui/scroll/BaseScrollWrapper.vue'
 import { useAppScroll } from '~/composables/ui/app/useAppScroll'
-import {useAppAccessibility} from "~/composables/ui/app/useAppAccessibility";
+import { useAppAccessibility } from '~/composables/ui/app/useAppAccessibility'
 
 const route = useRoute()
 const { registerScrollElement, scrollToTop } = useAppScroll()
