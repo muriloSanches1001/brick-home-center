@@ -31,6 +31,21 @@ const breadcrumbs = computed(() => {
 
   return items
 })
+
+const config = useRuntimeConfig()
+
+const cleanDesc = (text: string): string => text ? text.substring(0, 155) + '...' : 'Confira este artigo na Brick Home Center.'
+
+useSeoMeta({
+  title: () => `${post.value?.title} · Brick Home Center`,
+  description: () => cleanDesc(post.value?.description_1 || ''),
+
+  ogTitle: () => `${post.value?.title} · Brick Home Center`,
+  ogDescription: () => cleanDesc(post.value?.description_1 || ''),
+  ogImage: () => post.value && post.value.image_1 ? post.value.image_1 : config.public.siteUrl + '/images/seo/blog-detail.jpg',
+  twitterCard: 'summary_large_image',
+  ogType: 'article',
+})
 </script>
 
 <template>

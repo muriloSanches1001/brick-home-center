@@ -32,6 +32,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'pt-BR',
+      },
+      charset: 'utf-8',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'msapplication-TileColor', content: '#ffffff' },
@@ -62,8 +66,11 @@ export default defineNuxtConfig({
     'simplebar/dist/simplebar.min.css',
   ],
   site: {
-    url: process.env.SITE_URL,
+    url: process.env.NUXT_SITE_URL,
     name: 'Brick Home Center',
+    description: 'A sua parceira completa em materiais de construção. Do básico ao acabamento, encontre pisos, tintas, ferramentas e decoração com os melhores preços.',
+    indexable: true,
+    defaultLocale: 'pt-BR',
   },
   runtimeConfig: {
     backendBase: process.env.NUXT_BACKEND_BASE,
@@ -71,6 +78,7 @@ export default defineNuxtConfig({
     public: {
       siteName: 'Brick Home Center',
       s3Base: process.env.NUXT_S3_BASE,
+      siteUrl: process.env.NUXT_SITE_URL,
     },
   },
   alias: {
