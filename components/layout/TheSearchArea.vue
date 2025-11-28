@@ -24,9 +24,15 @@ onUnmounted(() => {
   deactivate()
 })
 
-const search = () => {
-  // TODO: Implement search functionality
-  console.log('Searching for:', searchInput.value)
+const search = async () => {
+  handleClose()
+  await navigateTo({
+    path: '/shop',
+    query: {
+      search: searchInput.value,
+      page: 0,
+    },
+  })
 }
 
 const handleClose = () => {
@@ -38,7 +44,7 @@ const handleClose = () => {
 <template>
   <dialog
     ref="dialogRef"
-    class="fixed top-0 left-0 z-20 w-full py-16 bg-neutral-50 flex px-6 xl:px-0"
+    class="fixed top-0 left-0 z-20 w-full py-16 bg-neutral-50 flex px-6 xl:px-4"
     aria-labelledby="search-title"
     aria-describedby="search-description"
     aria-modal="true"
@@ -70,21 +76,22 @@ const handleClose = () => {
       role="search"
       @submit.prevent="search"
     >
-      <base-text-input
-        id="search-area-product-name"
-        v-model="searchInput"
-        name="search"
-        type="text"
-        size="md"
-        placeholder="Digite sua busca"
-        icon="uil:search"
-        input-aria-label="Campo de busca"
-        input-aria-describedby="search-description"
-        :disabled="false"
-        :required="true"
-        bg="bg-neutral-50"
-        class="w-full md:w-3/4"
-      />
+      <div class="w-full md:w-3/4">
+        <base-text-input
+          id="search-area-product-name"
+          v-model="searchInput"
+          name="search"
+          type="text"
+          size="md"
+          placeholder="Digite sua busca"
+          icon="uil:search"
+          input-aria-label="Campo de busca"
+          input-aria-describedby="search-description"
+          :disabled="false"
+          :required="true"
+          bg="bg-neutral-50"
+        />
+      </div>
       <base-arrow-button
         class="w-full md:w-1/4"
         size="sm"
@@ -95,7 +102,3 @@ const handleClose = () => {
     </form>
   </dialog>
 </template>
-
-<style scoped>
-
-</style>
