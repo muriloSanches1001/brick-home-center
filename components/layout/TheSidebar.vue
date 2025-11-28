@@ -5,6 +5,7 @@ import { useSidebar } from '~/composables/ui/modals/useSidebar'
 import BaseHeading from '~/components/ui/typography/BaseHeading.vue'
 import BaseText from '~/components/ui/typography/BaseText.vue'
 import BaseScrollWrapper from '~/components/ui/scroll/BaseScrollWrapper.vue'
+import {useAppAccessibility} from "~/composables/ui/app/useAppAccessibility";
 
 const benefits = ref(['Qualidade', 'Durabilidade', 'Segurança', 'Pontualidade', 'Inovação'])
 const { social } = useAppConfig()
@@ -31,6 +32,10 @@ const handleClose = () => {
   deactivate()
   close()
 }
+
+// accessibility
+
+const { zoom, increase, decrease, reset, MIN_ZOOM, MAX_ZOOM } = useAppAccessibility()
 </script>
 
 <template>
@@ -110,7 +115,42 @@ const handleClose = () => {
           >
             Acessibilidade
           </base-heading>
-          <!--    TODO: Add accessibility section    -->
+          <div class="flex gap-3 flex-col">
+            <div class="flex items-center gap-4">
+              <base-heading as="h5" size="sm">
+                Tamanho da fonte:
+              </base-heading>
+              <div class="flex gap-2">
+                <button
+                  type="button"
+                  @click="decrease"
+                  :disabled="zoom <= MIN_ZOOM"
+                  aria-label="Diminuir tamanho da fonte"
+                  class="w-6 h-6 rounded-sm bg-neutral-900 hover:bg-primary focus:bg-primary flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+                >
+                  <Icon name="uil:minus" class="w-3 h-3 text-neutral-50" />
+                </button>
+                <button
+                  type="button"
+                  @click="reset"
+                  aria-label="Restaurar tamanho original"
+                  title="Clique para restaurar o padrão"
+                  class="px-3 h-6 rounded-sm bg-neutral-900 hover:bg-primary focus:bg-primary flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+                >
+                  <base-text size="sm" as="span" class="text-neutral-50">{{ zoom === 100 ? 'Padrão' : zoom + '%' }}</base-text>
+                </button>
+                <button
+                  type="button"
+                  @click="increase"
+                  :disabled="zoom >= MAX_ZOOM"
+                  aria-label="Aumentar tamanho da fonte"
+                  class="w-6 h-6 rounded-sm bg-neutral-900 hover:bg-primary focus:bg-primary flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 disabled:opacity-50 disabled:hover:bg-neutral-900"
+                >
+                  <Icon name="uil:plus" class="w-3 h-3 text-neutral-50" />
+                </button>
+              </div>
+            </div>
+          </div>
           <base-heading
             as="h4"
             size="lg"
