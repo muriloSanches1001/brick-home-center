@@ -12,7 +12,7 @@ useSeoMeta({
 
   ogTitle: 'Blog de Obras · Brick Home Center',
   ogDescription: 'Dicas de construção, tendências de arquitetura e tutoriais de reforma para sua obra.',
-  ogImage: config.public.siteUrl + '/seo/blog-index.jpg',
+  ogImage: config.public.siteUrl + '/images/seo/blog-index.jpg',
   twitterCard: 'summary_large_image',
 })
 </script>
