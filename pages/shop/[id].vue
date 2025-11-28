@@ -14,11 +14,18 @@ const productId = route.params.id as string
 
 const { product, pending, error } = useProduct(productId)
 
-useHead({
-  title: computed(() => product.value ? `${product.value.name} · Brick Home Center` : 'Carregando...'),
-  meta: [
-    { name: 'description', content: computed(() => product.value?.description || '') },
-  ],
+const cleanDesc = (text: string): string => text ? text.substring(0, 155) + '...' : 'Confira este produto na Brick Home Center.'
+
+const config = useRuntimeConfig()
+
+useSeoMeta({
+  title: () => `${product.value?.name} · Brick Home Center`,
+  description: () => cleanDesc(product.value?.description || ''),
+
+  ogTitle: () => `${product.value?.name} · Brick Home Center`,
+  ogDescription: () => `Compre ${product.value?.name}. Confira as ofertas de materiais de construção na Brick Home Center.`,
+  ogImage: () => product.value && product.value.images.length > 0 ? config.public.s3Base + product.value?.images[0] : config.public.siteUrl + '/images/seo/shop-detail.jpg',
+  twitterCard: 'summary_large_image',
 })
 
 const breadcrumbs = computed(() => {
