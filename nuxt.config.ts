@@ -84,6 +84,9 @@ export default defineNuxtConfig({
   alias: {
     '~': rootDir,
   },
+  routeRules: {
+    '/contato': { prerender: true },
+  },
   compatibilityDate: '2025-07-15',
   typescript: {
     strict: true,
