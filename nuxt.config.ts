@@ -59,6 +59,10 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/images/favicon/favicon-96x96.png' },
         { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/images/favicon/favicon-16x16.png' },
       ],
+      script: [
+        { src: 'https://vlibras.gov.br/app/vlibras-plugin.js', tagPosition: 'bodyClose' },
+        { innerHTML: "new window.VLibras.Widget('https://vlibras.gov.br/app')", tagPosition: 'bodyClose' },
+      ],
     },
   },
   css: [

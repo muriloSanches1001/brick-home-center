@@ -30,4 +30,10 @@ init()
       <nuxt-page />
     </nuxt-layout>
   </base-scroll-wrapper>
+  <div v-bind="{ vw: '' }" class="enabled">
+    <div v-bind="{ 'vw-access-button': '' }" class="active" />
+    <div v-bind="{ 'vw-plugin-wrapper': '' }">
+      <div class="vw-plugin-top-wrapper" />
+    </div>
+  </div>
 </template>
