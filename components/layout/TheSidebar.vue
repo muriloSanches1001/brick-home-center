@@ -35,7 +35,7 @@ const handleClose = () => {
 
 // accessibility
 
-const { zoom, increase, decrease, reset, MIN_ZOOM, MAX_ZOOM } = useAppAccessibility()
+const { zoom, increase, decrease, reset, MIN_ZOOM, MAX_ZOOM, highContrast, toggleHighContrast, largeCursor, toggleLargeCursor } = useAppAccessibility()
 </script>
 
 <template>
@@ -164,6 +164,56 @@ const { zoom, increase, decrease, reset, MIN_ZOOM, MAX_ZOOM } = useAppAccessibil
                   />
                 </button>
               </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <base-heading
+                as="h5"
+                size="sm"
+              >
+                Alto contraste:
+              </base-heading>
+              <button
+                type="button"
+                role="switch"
+                :aria-checked="highContrast"
+                aria-label="Alternar modo de alto contraste"
+                class="px-3 h-6 rounded-sm flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+                :class="highContrast ? 'bg-primary' : 'bg-neutral-900 hover:bg-primary focus:bg-primary'"
+                @click="toggleHighContrast"
+              >
+                <base-text
+                  size="sm"
+                  as="span"
+                  class="text-neutral-50"
+                >
+                  {{ highContrast ? 'Ligado' : 'Desligado' }}
+                </base-text>
+              </button>
+            </div>
+            <div class="flex items-center gap-4">
+              <base-heading
+                as="h5"
+                size="sm"
+              >
+                Cursor grande:
+              </base-heading>
+              <button
+                type="button"
+                role="switch"
+                :aria-checked="largeCursor"
+                aria-label="Alternar cursor grande"
+                class="px-3 h-6 rounded-sm flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+                :class="largeCursor ? 'bg-primary' : 'bg-neutral-900 hover:bg-primary focus:bg-primary'"
+                @click="toggleLargeCursor"
+              >
+                <base-text
+                  size="sm"
+                  as="span"
+                  class="text-neutral-50"
+                >
+                  {{ largeCursor ? 'Ligado' : 'Desligado' }}
+                </base-text>
+              </button>
             </div>
           </div>
           <base-heading

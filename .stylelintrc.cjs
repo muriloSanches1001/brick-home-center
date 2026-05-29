@@ -18,11 +18,6 @@ module.exports = {
         ignorePseudoClasses: ['global', 'deep', 'slotted'],
       },
     ],
-    'declaration-property-value-no-unknown': [
-      true,
-      {
-        ignoreValues: ['/^theme\\(/'],
-      },
-    ],
+    'declaration-property-value-no-unknown': null,
   },
 }

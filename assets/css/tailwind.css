@@ -9,4 +9,218 @@
   --primary-strong: theme('colors.primary.strong');
   --neutral-100: theme('colors.neutral.100');
   --neutral-50: theme('colors.neutral.50');
+  --large-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M4 2 L4 38 L14 28 L20 44 L26 42 L20 28 L34 28 Z' fill='black' stroke='white' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
+
+/* stylelint-disable no-descending-specificity */
+body.high-contrast {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+body.high-contrast *:not(svg, svg *) {
+  color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+body.high-contrast nav,
+body.high-contrast header,
+body.high-contrast footer,
+body.high-contrast main,
+body.high-contrast section,
+body.high-contrast article,
+body.high-contrast aside,
+body.high-contrast dialog,
+body.high-contrast div,
+body.high-contrast ul,
+body.high-contrast ol,
+body.high-contrast li,
+body.high-contrast form,
+body.high-contrast fieldset,
+body.high-contrast table,
+body.high-contrast thead,
+body.high-contrast tbody,
+body.high-contrast tr,
+body.high-contrast td,
+body.high-contrast th,
+body.high-contrast figure {
+  background-color: #000 !important;
+  background-image: none !important;
+}
+
+body.high-contrast .iconify,
+body.high-contrast [class*="iconify"] {
+  background-color: #fff !important;
+}
+
+body.high-contrast svg {
+  color: #fff !important;
+  fill: currentcolor !important;
+}
+
+body.high-contrast a,
+body.high-contrast a * {
+  color: #ff0 !important;
+}
+
+body.high-contrast a {
+  text-decoration: underline !important;
+}
+
+body.high-contrast a .iconify,
+body.high-contrast a [class*="iconify"] {
+  background-color: #ff0 !important;
+}
+
+body.high-contrast a svg {
+  color: #ff0 !important;
+}
+
+body.high-contrast button,
+body.high-contrast [role="button"],
+body.high-contrast [role="switch"],
+body.high-contrast input[type="button"],
+body.high-contrast input[type="submit"] {
+  background-color: #000 !important;
+  background-image: none !important;
+  color: #ff0 !important;
+  border: 2px solid #ff0 !important;
+}
+
+body.high-contrast button *,
+body.high-contrast [role="button"] *,
+body.high-contrast [role="switch"] * {
+  color: #ff0 !important;
+}
+
+body.high-contrast button .iconify,
+body.high-contrast button [class*="iconify"],
+body.high-contrast [role="button"] .iconify,
+body.high-contrast [role="button"] [class*="iconify"],
+body.high-contrast [role="switch"] .iconify,
+body.high-contrast [role="switch"] [class*="iconify"] {
+  background-color: #ff0 !important;
+}
+
+body.high-contrast button svg,
+body.high-contrast [role="button"] svg,
+body.high-contrast [role="switch"] svg {
+  color: #ff0 !important;
+}
+
+body.high-contrast button:not(:disabled):hover,
+body.high-contrast button:not(:disabled):focus-visible,
+body.high-contrast a:hover,
+body.high-contrast a:focus-visible,
+body.high-contrast [role="button"]:not([aria-disabled="true"]):hover,
+body.high-contrast [role="button"]:not([aria-disabled="true"]):focus-visible,
+body.high-contrast [role="switch"]:hover,
+body.high-contrast [role="switch"]:focus-visible {
+  background-color: #ff0 !important;
+  color: #000 !important;
+}
+
+body.high-contrast button:not(:disabled):hover *,
+body.high-contrast button:not(:disabled):focus-visible *,
+body.high-contrast a:hover *,
+body.high-contrast a:focus-visible *,
+body.high-contrast [role="button"]:not([aria-disabled="true"]):hover *,
+body.high-contrast [role="button"]:not([aria-disabled="true"]):focus-visible *,
+body.high-contrast [role="switch"]:hover *,
+body.high-contrast [role="switch"]:focus-visible * {
+  color: #000 !important;
+}
+
+body.high-contrast button:not(:disabled):hover .iconify,
+body.high-contrast button:not(:disabled):hover [class*="iconify"],
+body.high-contrast button:not(:disabled):focus-visible .iconify,
+body.high-contrast button:not(:disabled):focus-visible [class*="iconify"],
+body.high-contrast a:hover .iconify,
+body.high-contrast a:hover [class*="iconify"],
+body.high-contrast a:focus-visible .iconify,
+body.high-contrast a:focus-visible [class*="iconify"],
+body.high-contrast [role="button"]:hover .iconify,
+body.high-contrast [role="button"]:hover [class*="iconify"],
+body.high-contrast [role="switch"]:hover .iconify,
+body.high-contrast [role="switch"]:hover [class*="iconify"] {
+  background-color: #000 !important;
+}
+
+body.high-contrast button:not(:disabled):hover svg,
+body.high-contrast button:not(:disabled):focus-visible svg,
+body.high-contrast a:hover svg,
+body.high-contrast a:focus-visible svg,
+body.high-contrast [role="button"]:hover svg,
+body.high-contrast [role="switch"]:hover svg {
+  color: #000 !important;
+}
+
+body.high-contrast :focus-visible {
+  outline: 3px solid #ff0 !important;
+  outline-offset: 2px !important;
+}
+
+body.high-contrast input:not([type="button"], [type="submit"], [type="reset"]),
+body.high-contrast textarea,
+body.high-contrast select {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+body.high-contrast input::placeholder,
+body.high-contrast textarea::placeholder {
+  color: #ccc !important;
+  opacity: 1 !important;
+}
+
+body.high-contrast button:disabled,
+body.high-contrast [aria-disabled="true"] {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+}
+
+body.high-contrast hr,
+body.high-contrast [role="separator"] {
+  background-color: #fff !important;
+  border-color: #fff !important;
+}
+
+body.high-contrast div[class~="w-px"],
+body.high-contrast div[class~="h-px"] {
+  background-color: #fff !important;
+}
+
+body.large-cursor,
+body.large-cursor * {
+  cursor: var(--large-cursor) 4 2, auto !important;
+}
+
+body.large-cursor a,
+body.large-cursor a *,
+body.large-cursor button,
+body.large-cursor button *,
+body.large-cursor [role="button"],
+body.large-cursor [role="button"] *,
+body.large-cursor [role="switch"],
+body.large-cursor [role="switch"] *,
+body.large-cursor [role="link"],
+body.large-cursor summary,
+body.large-cursor label[for],
+body.large-cursor select {
+  cursor: var(--large-cursor) 4 2, pointer !important;
+}
+
+body.large-cursor input:not([type="button"], [type="submit"], [type="reset"], [type="checkbox"], [type="radio"]),
+body.large-cursor textarea {
+  cursor: text !important;
+}
+
+body.large-cursor button:disabled,
+body.large-cursor [aria-disabled="true"] {
+  cursor: not-allowed !important;
+}
+/* stylelint-enable no-descending-specificity */

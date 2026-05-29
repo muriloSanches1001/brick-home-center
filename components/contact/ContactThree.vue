@@ -4,17 +4,53 @@ import BaseArrowButton from '~/components/ui/buttons/BaseArrowButton.vue'
 import BaseHeading from '~/components/ui/typography/BaseHeading.vue'
 import BaseText from '~/components/ui/typography/BaseText.vue'
 
+type HcaptchaWindow = Window & {
+  hcaptcha?: { reset: (widgetId?: string) => void }
+  onHcaptchaSuccess?: (token: string) => void
+  onHcaptchaExpired?: () => void
+}
+
 const { contacts } = useAppConfig()
 
 const nameInput = ref<string>('')
 const subjectInput = ref<string>('')
 const emailInput = ref<string>('')
+const captchaToken = ref<string>('')
+
+useHead({
+  script: [
+    {
+      src: 'https://js.hcaptcha.com/1/api.js',
+      async: true,
+      defer: true,
+    },
+  ],
+})
+
+onMounted(() => {
+  const win = window as HcaptchaWindow
+  win.onHcaptchaSuccess = (token: string) => {
+    captchaToken.value = token
+  }
+  win.onHcaptchaExpired = () => {
+    captchaToken.value = ''
+  }
+})
+
+onBeforeUnmount(() => {
+  const win = window as HcaptchaWindow
+  delete win.onHcaptchaSuccess
+  delete win.onHcaptchaExpired
+})
 
 const handleSubmit = () => {
-  // TODO: implements a best logic for form
-
   if (!nameInput.value || !subjectInput.value || !emailInput.value) {
     alert('Por favor, preencha todos os campos')
+    return
+  }
+
+  if (!captchaToken.value) {
+    alert('Por favor, resolva o captcha antes de enviar o formulário')
     return
   }
 
@@ -23,7 +59,16 @@ const handleSubmit = () => {
     name: nameInput.value,
     subject: subjectInput.value,
     email: emailInput.value,
+    captchaToken: captchaToken.value,
   })
+
+  nameInput.value = ''
+  subjectInput.value = ''
+  emailInput.value = ''
+  captchaToken.value = ''
+
+  const win = window as HcaptchaWindow
+  win.hcaptcha?.reset()
 }
 </script>
 
@@ -95,6 +140,14 @@ const handleSubmit = () => {
             :required="true"
             bg="bg-neutral-900"
             class="w-full text-neutral-50"
+          />
+          <div
+            class="h-captcha"
+            data-sitekey="4aa2d35c-48e2-45b4-9c3e-568ee0943842"
+            data-callback="onHcaptchaSuccess"
+            data-expired-callback="onHcaptchaExpired"
+            data-theme="dark"
+            aria-label="Verificação de segurança hCaptcha"
           />
           <base-arrow-button type="submit">
             Agendar Contato
